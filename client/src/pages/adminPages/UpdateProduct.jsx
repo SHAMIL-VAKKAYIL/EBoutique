@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getSinlgeProduct, updateProduct } from '../../redux/productSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 
 function UpdateProduct() {
     const { id } = useParams()
@@ -74,124 +74,143 @@ function UpdateProduct() {
         dispatch(updateProduct({ productData: formData, productId: id }))
         console.log(formData);
     }
+
+    const navigate = useNavigate()
+    const handlenavigation = () => {
+        navigate(-1)
+    }
     return (
-        <div className="container mt-5">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header bg-primary text-white">
-                            <h2 className="mb-0">Update Product</h2>
-                        </div>
-                        <div className="card-body">
-                            <form onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <input
-                                        type="text"
-                                        placeholder="Product Name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        className="form-control"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <div className="text-center mb-3">
-                                        <img
-                                            src={`/img/${image}` }
-                                            alt="Product"
-                                            style={{
-                                                maxWidth: '200px',
-                                                height: '200px',
-                                                objectFit: 'cover',
-                                                borderRadius: '8px',
-                                                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                                            }}
-                                        />
-                                    </div>
-                                    <input
-                                        type='file'
-                                        placeholder="Image URL"
-                                        onChange={handleImageChange}
-                                        className="form-control"
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <textarea
-                                        placeholder="Description"
-                                        value={description}
-                                        onChange={(e) => setdescription(e.target.value)}
-                                        className="form-control"
-                                        rows="3"
-                                    />
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6 mb-3">
+        <>
+            <div className="d-block d-md-none col-12 " >
+                <div className="row ">
+                    <div className="col-12">
+                        <nav className="breadcrumb mb-30" style={{ backgroundColor: '#2b313b', borderRadius: '20px', marginTop: '2px' }} >
+                            {/* <Link className="breadcrumb-item text-black" to={'/admin'}>Home</Link> */}
+                            <Link className="breadcrumb-item" onClick={handlenavigation} >Product Management</Link>
+                            <span className="breadcrumb-item active">Update product</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div className="container mt-5">
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="card">
+                            <div className="card-header bg-primary text-white">
+                                <h2 className="mb-0">Update Product</h2>
+                            </div>
+                            <div className="card-body">
+                                <form onSubmit={handleSubmit}>
+                                    <div className="mb-3">
                                         <input
                                             type="text"
-                                            placeholder="Color"
-                                            value={color}
-                                            onChange={(e) => setcolor(e.target.value)}
+                                            placeholder="Product Name"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
                                             className="form-control"
                                         />
                                     </div>
-                                    <div className="col-md-6 mb-3">
+                                    <div className="mb-3">
+                                        <div className="text-center mb-3">
+                                            <img
+                                                src={`/img/${image}`}
+                                                alt="Product"
+                                                style={{
+                                                    maxWidth: '200px',
+                                                    height: '200px',
+                                                    objectFit: 'cover',
+                                                    borderRadius: '8px',
+                                                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                                                }}
+                                            />
+                                        </div>
                                         <input
-                                            type="text"
-                                            placeholder="Size"
-                                            value={Size}
-                                            onChange={(e) => setSize(e.target.value)}
+                                            type='file'
+                                            placeholder="Image URL"
+                                            onChange={handleImageChange}
                                             className="form-control"
                                         />
                                     </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6 mb-3">
-                                        <input
-                                            type="text"
-                                            placeholder="Pattern"
-                                            value={pattern}
-                                            onChange={(e) => setPattern(e.target.value)}
+                                    <div className="mb-3">
+                                        <textarea
+                                            placeholder="Description"
+                                            value={description}
+                                            onChange={(e) => setdescription(e.target.value)}
                                             className="form-control"
+                                            rows="3"
                                         />
                                     </div>
-                                    <div className="col-md-6 mb-3">
-                                        <input
-                                            type="text"
-                                            placeholder="Category"
-                                            value={category}
-                                            onChange={(e) => setCategory(e.target.value)}
-                                            className="form-control"
-                                        />
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Color"
+                                                value={color}
+                                                onChange={(e) => setcolor(e.target.value)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Size"
+                                                value={Size}
+                                                onChange={(e) => setSize(e.target.value)}
+                                                className="form-control"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6 mb-3">
-                                        <input
-                                            type="text"
-                                            placeholder="Material"
-                                            value={material}
-                                            onChange={(e) => setmaterial(e.target.value)}
-                                            className="form-control"
-                                        />
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Pattern"
+                                                value={pattern}
+                                                onChange={(e) => setPattern(e.target.value)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Category"
+                                                value={category}
+                                                onChange={(e) => setCategory(e.target.value)}
+                                                className="form-control"
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="col-md-6 mb-3">
-                                        <input
-                                            type="number"
-                                            placeholder="Price"
-                                            value={price}
-                                            onChange={(e) => setPrice(e.target.value)}
-                                            className="form-control"
-                                        />
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Material"
+                                                value={material}
+                                                onChange={(e) => setmaterial(e.target.value)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <input
+                                                type="number"
+                                                placeholder="Price"
+                                                value={price}
+                                                onChange={(e) => setPrice(e.target.value)}
+                                                className="form-control"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" className="btn btn-primary w-100">
-                                    Update Product
-                                </button>
-                            </form>
+                                    <button type="submit" className="btn btn-primary w-100">
+                                        Update Product
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
 

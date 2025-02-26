@@ -65,7 +65,7 @@ function App() {
           <Route path="/admin/*" element={
             <>
               <div className='d-flex flex-column flex-md-row'>
-                <div className='col-12 col-md-2 bg-dark'>
+                <div className='col-12 col-md-2' style={{ backgroundColor: '#2b313b' }}>
                   <AdminSideBar />
                 </div>
                 <div className='col-12 col-md-10'>
@@ -90,7 +90,7 @@ function App() {
           <Route path="/vendor/*" element={
             <>
               <div className='d-flex flex-column flex-md-row'>
-                <div className='col-12 col-md-2 bg-dark'>
+                <div className='col-12 col-md-2' style={{ backgroundColor: '#2b313b' }}>
                   <VendorSidebar />
                 </div>
                 <div className='col-12 col-md-10'>

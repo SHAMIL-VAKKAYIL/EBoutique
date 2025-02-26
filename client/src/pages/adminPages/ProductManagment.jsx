@@ -89,119 +89,132 @@ function ProductManagment() {
 
 
     return (
-        <div className="container mt-4">
-            <h2 className="mb-4">Product Management</h2>
-            <div className="mb-4">
-                <button
-                    className={`btn ${activeSection === 'add' ? 'btn-primary' : 'btn-outline-primary'} me-2`}
-                    onClick={() => setActiveSection('add')}
-                >
-                    Add Product
-                </button>
-                <button
-                    className={`btn ${activeSection === 'list' ? 'btn-primary' : 'btn-outline-primary'}`}
-                    onClick={() => setActiveSection('list')}
-                >
-                    Manage Products
-                </button>
-            </div>
-
-            {activeSection === 'add' && (
-                <div className="row">
-                    <div className="container mt-4">
-                        <form className="card p-4">
-                            <div className="mb-3">
-                                <label className="form-label">Product Name</label>
-                                <input onChange={(e) => setName(e.target.value)} type="text" className="form-control" />
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label">Description</label>
-                                <textarea onChange={(e) => setdescription(e.target.value)} className="form-control" rows="3"></textarea>
-                            </div>
-                            <div className="row mb-3">
-                                <div className="col">
-                                    <label className="form-label">Color</label>
-                                    <input onChange={(e) => setcolor(e.target.value)} type="text" className="form-control" />
-                                </div>
-                                <div className="col">
-                                    <label className="form-label">Size</label>
-                                    <input onChange={(e) => setSize(e.target.value)} type="text" className="form-control" />
-                                </div>
-                            </div>
-                            <div className="row mb-3">
-                                <div className="col">
-                                    <label className="form-label">Pattern</label>
-                                    <input onChange={(e) => setPattern(e.target.value)} type="text" className="form-control" />
-                                </div>
-                                <div className="col">
-                                    <label className="form-label">Category</label>
-                                    <input onChange={(e) => setCategory(e.target.value)} type="text" className="form-control" />
-                                </div>
-                            </div>
-                            <div className="row mb-3">
-                                <div className="col">
-                                    <label className="form-label">Material</label>
-                                    <input onChange={(e) => setmaterial(e.target.value)} type="text" className="form-control" />
-                                </div>
-                                <div className="col">
-                                    <label className="form-label">Price</label>
-                                    <input onChange={(e) => setPrice(e.target.value)} type="number" className="form-control" />
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label">Image</label>
-                                <input onChange={handleImageChange} type="file" className="form-control" accept="image/*" />
-                            </div>
-                            <button onClick={handleSubmit} type="submit" className="btn btn-primary w-100">
-                                Add Product
-                            </button>
-                        </form>
+        <>
+            <div className="d-block d-md-none col-12 " >
+                <div className="row ">
+                    <div className="col-12">
+                        <nav className="breadcrumb mb-30" style={{ backgroundColor: '#2b313b', borderRadius: '20px', marginTop: '2px' }} >
+                            <Link className="breadcrumb-item text-black" to={'/admin'}>Home</Link>
+                            <span className="breadcrumb-item active">Product Management</span>
+                        </nav>
                     </div>
                 </div>
-            )}
+            </div>
+            <div className="container mt-4">
+                <h2 className="mb-4">Product Management</h2>
+                <div className="mb-4">
+                    <button
+                        className={`btn ${activeSection === 'add' ? 'btn-primary' : 'btn-outline-primary'} me-2`}
+                        onClick={() => setActiveSection('add')}
+                    >
+                        Add Product
+                    </button>
+                    <button
+                        className={`btn ${activeSection === 'list' ? 'btn-primary' : 'btn-outline-primary'}`}
+                        onClick={() => setActiveSection('list')}
+                    >
+                        Manage Products
+                    </button>
+                </div>
 
-            {activeSection === 'list' && (
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="table-responsive">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Category</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {products.map((product) => (
-                                        <tr key={product._id}>
-                                            <td>
-                                                <img
-                                                    src={`/img/${product.image}`}
-                                                    alt={product.name}
-                                                    style={{ width: '50px', height: '50px', objectFit: 'cover' }}
-                                                />
-                                            </td>
-                                            <td>{product.name}</td>
-                                            <td>{product.price}</td>
-                                            <td>{product.category}</td>
-                                            <td>
-                                                <button className="btn btn-sm btn-danger mr-3" onClick={() => delProduct(product._id)}>Delete</button>
-                                                <Link to={`/admin/updateProduct/${product._id}`}><button className='btn btn-sm btn-dark'>manage</button></Link>
-                                            </td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                {activeSection === 'add' && (
+                    <div className="row">
+                        <div className="container mt-4">
+                            <form className="card p-4">
+                                <div className="mb-3">
+                                    <label className="form-label">Product Name</label>
+                                    <input onChange={(e) => setName(e.target.value)} type="text" className="form-control" />
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Description</label>
+                                    <textarea onChange={(e) => setdescription(e.target.value)} className="form-control" rows="3"></textarea>
+                                </div>
+                                <div className="row mb-3">
+                                    <div className="col">
+                                        <label className="form-label">Color</label>
+                                        <input onChange={(e) => setcolor(e.target.value)} type="text" className="form-control" />
+                                    </div>
+                                    <div className="col">
+                                        <label className="form-label">Size</label>
+                                        <input onChange={(e) => setSize(e.target.value)} type="text" className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="row mb-3">
+                                    <div className="col">
+                                        <label className="form-label">Pattern</label>
+                                        <input onChange={(e) => setPattern(e.target.value)} type="text" className="form-control" />
+                                    </div>
+                                    <div className="col">
+                                        <label className="form-label">Category</label>
+                                        <input onChange={(e) => setCategory(e.target.value)} type="text" className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="row mb-3">
+                                    <div className="col">
+                                        <label className="form-label">Material</label>
+                                        <input onChange={(e) => setmaterial(e.target.value)} type="text" className="form-control" />
+                                    </div>
+                                    <div className="col">
+                                        <label className="form-label">Price</label>
+                                        <input onChange={(e) => setPrice(e.target.value)} type="number" className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Image</label>
+                                    <input onChange={handleImageChange} type="file" className="form-control" accept="image/*" />
+                                </div>
+                                <button onClick={handleSubmit} type="submit" className="btn btn-primary w-100">
+                                    Add Product
+                                </button>
+                            </form>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+
+                {activeSection === 'list' && (
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="table-responsive">
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Category</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {products.map((product) => (
+                                            <tr key={product._id}>
+                                                <td>
+                                                    <img
+                                                        src={`/img/${product.image}`}
+                                                        alt={product.name}
+                                                        style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                                                    />
+                                                </td>
+                                                <td>{product.name}</td>
+                                                <td>{product.price}</td>
+                                                <td>{product.category}</td>
+                                                <td>
+                                                    <button className="btn btn-sm btn-danger mr-3" onClick={() => delProduct(product._id)}>Delete</button>
+                                                    <Link to={`/admin/updateProduct/${product._id}`}><button className='btn btn-sm btn-dark'>manage</button></Link>
+                                                </td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </>
+
     )
 
 }

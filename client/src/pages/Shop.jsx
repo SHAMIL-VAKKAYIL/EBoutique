@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    colorFilter,
     getAllProducts,
     priceRage,
+    productsearching,
     sizeFilter
 } from '../redux/productSlice';
+import { useLocation } from 'react-router';
 
 function Shop() {
     const dispatch = useDispatch();
@@ -15,15 +16,21 @@ function Shop() {
         filterdProduct: state.product.filterdProduct
     }));
 
+    const { state: searchTerm } = useLocation()
+
     // State for filters
     const [min, setMin] = useState('');
     const [max, setMax] = useState('');
     // const [color, setColor] = useState('');
     const [size, setSize] = useState('');
 
+    console.log(searchTerm);
+
     useEffect(() => {
+
         dispatch(getAllProducts());
-    }, [dispatch]);
+
+    }, [dispatch], searchTerm);
 
     // console.log(size, 'dfkj');
 
@@ -34,7 +41,8 @@ function Shop() {
         dispatch(priceRage({ min, max }));
         // dispatch(colorFilter({ filter: color }));
         dispatch(sizeFilter({ filter: size }));
-    }, [max, size, dispatch]);
+        dispatch(productsearching(searchTerm))
+    }, [max, size, searchTerm, dispatch]);
 
     return (
         <>

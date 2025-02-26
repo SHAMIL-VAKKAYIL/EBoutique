@@ -8,7 +8,7 @@ function VendorSidebar() {
     const dispatch = useDispatch()
     return (
         <div className="sidebar-container">
-            <div className="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse vh-100">
+            <div className="col-md-3 col-lg-2 d-md-block sidebar collapse vh-100">
                 <div className="position-sticky pt-4">
                     <div className="text-center mb-4">
                         <h5 className="text-white">Vendor Dashboard</h5>

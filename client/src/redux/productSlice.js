@@ -141,6 +141,7 @@ export const colorFilter = createAsyncThunk('product/colorFilter', async ({ filt
 export const reviewsend = createAsyncThunk('product/review', async ({ productId, comment, rating }) => {
     try {
         const response = await apiUrl.post(`product/newReview`, { productId, comment: comment, rating: rating })
+        window.location.reload()
         return response.data
     } catch (error) {
         console.log(error);
@@ -198,6 +199,16 @@ export const ordering = createAsyncThunk('product/ordering', async ({ totalAmoun
         rzpy.open()
     } catch (error) {
         console.log(error);
+    }
+})
+
+export const productsearching = createAsyncThunk('product/productsearching', async (searchTerm) => {
+    try {
+        const res = await apiUrl.get(`product/search?query=${searchTerm}`)
+        return res.data
+    } catch (error) {
+        console.log(error);
+
     }
 })
 
@@ -572,6 +583,19 @@ const productSlice = createSlice({
                 state.customOrder = action.payload
             })
             .addCase(getUserCustomOrder.rejected, (state, action) => {
+                state.loading = false
+            })
+
+            .addCase(productsearching.pending, (state, action) => {
+                state.loading = true
+            })
+            .addCase(productsearching.fulfilled, (state, action) => {
+                state.loading = false
+                state.filterdProduct = action.payload
+                console.log(state.filterdProduct);
+
+            })
+            .addCase(productsearching.rejected, (state) => {
                 state.loading = false
             })
 

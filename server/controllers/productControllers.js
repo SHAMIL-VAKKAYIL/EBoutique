@@ -361,6 +361,19 @@ export const productByCategory = async (req, res) => {
     }
 }
 
+export const productSearching = async (req, res) => {
+    try {
+        const { query } = req.query
+        const product = await Product.find({ name: { $regex: query, $options: 'i' } })
+        console.log(product);
+
+        res.status(200).json(product)
+    } catch (error) {
+        console.log(error);
+
+    }
+}
+
 // export const productByPattern = async (req, res) => {
 //     const { filter: pattern } = req.params
 //     try {

@@ -17,7 +17,7 @@ function AdminHome() {
                 <div className="col-12">
                     <div className="row g-4">
                         <div className="col-sm-6 col-xl-3 mt-5">
-                            <div className="card border-0 bg-primary bg-gradient text-white shadow hover-shadow">
+                            <Link to={'/admin/usermanagment'} className="card border-0 bg-primary bg-gradient text-white shadow hover-shadow">
                                 <div className="card-body p-4">
                                     <div className="d-flex align-items-center">
                                         <div className="flex-grow-1">
@@ -27,7 +27,7 @@ function AdminHome() {
                                         <i className="bi bi-people fs-1"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
 
                         <div className="col-sm-6 col-xl-3 mt-5">
