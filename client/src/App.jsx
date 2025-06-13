@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import Home from './pages/Home'
 import { BrowserRouter as Router, Route, Routes, Navigate, useParams } from 'react-router'
 import ProductDetials from './pages/ProductDetials'
@@ -22,7 +21,7 @@ import UpdateProduct from './pages/adminPages/UpdateProduct'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentFailed from './pages/PaymentFaild'
 import Orders from './pages/Orders'
-import VendorHome from './pages/vendorPages/vendorHome'
+// import VendorHome from './pages/vendorPages/vendorHome'
 import VendorSidebar from './pages/vendorPages/VendorSidebar'
 import VendorProductManagment from './pages/vendorPages/VendorProductManagment'
 import OrderManagement from './pages/adminPages/OrderManagment'
@@ -33,6 +32,7 @@ import VendorLogin from './pages/vendorPages/VendorLogin'
 import { vendorCheckAuth } from './redux/vendorSlice'
 import CustomOrdermanage from './pages/adminPages/CustomOrdermanage'
 import CustomOrder from './pages/vendorPages/CustomOrder'
+import VendorHome from './pages/vendorPages/vendorHome'
 
 function App() {
   const dispatch = useDispatch()
