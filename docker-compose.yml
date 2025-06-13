@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  backend:
+    build: ./server
+    ports:
+      - "80:5173"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://admin:pass123@mongodb:27017/EBoutique?authSource=admin
+
+  frontend:
+    build: ./client
+    ports:
+      - "80:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
