@@ -31,7 +31,7 @@ import VendorLogin from './pages/vendorPages/VendorLogin'
 import { vendorCheckAuth } from './redux/vendorSlice'
 import CustomOrdermanage from './pages/adminPages/CustomOrdermanage'
 import CustomOrder from './pages/vendorPages/CustomOrder'
-import VendorHome from './pages/vendorPages/vendorHome'
+import VendorHome from './pages/vendorPages/VendorHome'
 
 function App() {
   const dispatch = useDispatch()
