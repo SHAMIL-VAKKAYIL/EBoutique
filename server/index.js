@@ -25,7 +25,7 @@ app.use('/vendor', vendorRouter)
 app.use('/product', productRouter)
 
 
-app.listen(3000, () => {
+app.listen(3000,'0.0.0.0', () => {
     console.log('Server is running on port 3000');
     DbConnect
 });
