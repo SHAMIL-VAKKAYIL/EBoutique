@@ -1,4 +1,4 @@
-import User from "../models/customerSchema.js"
+import User from "../models/CustomerSchema.js"
 import bcrypt from 'bcryptjs'
 import { userToken } from "../utils/TokenGeneration.js"
 
