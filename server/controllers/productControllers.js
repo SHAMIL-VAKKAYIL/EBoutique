@@ -1,7 +1,7 @@
 import Product from "../models/ProductSchema.js"
 import Order from '../models/OrderSchema.js'
 import customProd from '../models/CustomiseModel.js'
-import Razorpay from 'razorpay'
+// import Razorpay from 'razorpay'
 import dotenv from 'dotenv'
 import Cart from "../models/CartSchema.js"
 
