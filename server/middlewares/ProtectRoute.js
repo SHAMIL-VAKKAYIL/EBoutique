@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import User from '../models/customerSchema.js'
+import User from '../models/CustomerSchema.js'
 import Admin from '../models/AdminSchema.js'
 import Vendor from '../models/VendorSchema.js'
 
