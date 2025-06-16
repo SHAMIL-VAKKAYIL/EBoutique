@@ -1,12 +1,12 @@
 import Product from "../models/ProductSchema.js"
-import upload from "../utils/Multer.js"
 import Order from '../models/OrderSchema.js'
 import customProd from '../models/CustomiseModel.js'
 import Razorpay from 'razorpay'
-import { configDotenv } from 'dotenv'
+import dotenv from 'dotenv'
 import Cart from "../models/CartSchema.js"
 
-configDotenv()
+dotenv.conifg()
+
 export const addProduct = async (req, res) => {
     const productData = req.body
     const image = req.file.filename
@@ -419,45 +419,45 @@ export const productBySize = async (req, res) => {
     }
 }
 
-const razorpay = new Razorpay({
-    key_id: process.env.key_id,
-    key_secret: process.env.key_secret,
+// const razorpay = new Razorpay({
+//     key_id: process.env.key_id,
+//     key_secret: process.env.key_secret,
 
-})
+// })
 
 
 //? ordering 
 
-export const createOrder = async (req, res) => {
-    const userId = req.user._id
-    console.log(req.body, 'body');
+// export const createOrder = async (req, res) => {
+//     const userId = req.user._id
+//     console.log(req.body, 'body');
 
-    const { totalAmount, product } = req.body
-    console.log(req.body);
+//     const { totalAmount, product } = req.body
+//     console.log(req.body);
 
 
-    try {
+//     try {
 
-        const orderPayment = await razorpay.orders.create({
-            amount: totalAmount * 100,
-            currency: 'INR'
-        })
+//         const orderPayment = await razorpay.orders.create({
+//             amount: totalAmount * 100,
+//             currency: 'INR'
+//         })
 
-        const newOrder = new Order({
-            customer: userId,
-            totalAmount,
-            razorpayid: orderPayment.id,
-            orderItems: product,
-        })
-        await newOrder.save()
+//         const newOrder = new Order({
+//             customer: userId,
+//             totalAmount,
+//             razorpayid: orderPayment.id,
+//             orderItems: product,
+//         })
+//         await newOrder.save()
 
-        console.log(newOrder);
+//         console.log(newOrder);
 
-        res.status(200).json(orderPayment);
-    } catch (error) {
-        console.error(error);
-    }
-}
+//         res.status(200).json(orderPayment);
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
 
 export const getOrders = async (req, res) => {
