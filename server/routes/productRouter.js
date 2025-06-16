@@ -1,6 +1,6 @@
 import express from "express";
 import { adminProtectRoute, combineProtectRoute, userProtectRoute, vendorProtectRoute } from "../middlewares/ProtectRoute.js";
-import { addProduct, addToCart, createOrder, customize, deleteProduct, getAllOrders, getAllProduct, getAllReview, getCart, getCustomizedProducts, getCustomizedProductsForVendor, getOrders, getReview, getSinlgeProduct, getUserCustomOrder, newReview, productByCategory, productByPriceRange, productBySize, ProductByVendor, productQuantitydecrease, productSearching, removeFromCart, setCustomizedProductsForVendor, setcustomOrderStatus, setOrderStatus, UpdateProduct } from "../controllers/productControllers.js";
+import { addProduct, addToCart,  customize, deleteProduct, getAllOrders, getAllProduct, getAllReview, getCart, getCustomizedProducts, getCustomizedProductsForVendor, getOrders, getReview, getSinlgeProduct, getUserCustomOrder, newReview, productByCategory, productByPriceRange, productBySize, ProductByVendor, productQuantitydecrease, productSearching, removeFromCart, setCustomizedProductsForVendor, setcustomOrderStatus, setOrderStatus, UpdateProduct } from "../controllers/productControllers.js";
 import upload from "../utils/Multer.js";
 
 
@@ -23,7 +23,6 @@ router.get('/getSinlgeProduct/:id', getSinlgeProduct)
 
 router.get('/search', productSearching)
 
-router.post('/createOrder', userProtectRoute, createOrder)
 router.get('/getOrders', userProtectRoute, getOrders)
 router.get('/getAllorders', adminProtectRoute, getAllOrders)
 router.put('/setStatus/:id/:status', adminProtectRoute, setOrderStatus)
