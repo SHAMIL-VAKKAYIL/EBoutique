@@ -1,7 +1,7 @@
 import Product from "../models/ProductSchema.js"
 import Order from '../models/OrderSchema.js'
 import customProd from '../models/CustomiseModel.js'
-// import Razorpay from 'razorpay'
+
 import dotenv from 'dotenv'
 import Cart from "../models/CartSchema.js"
 
@@ -418,13 +418,6 @@ export const productBySize = async (req, res) => {
         console.log(error);
     }
 }
-
-// const razorpay = new Razorpay({
-//     key_id: process.env.key_id,
-//     key_secret: process.env.key_secret,
-
-// })
-
 
 //? ordering 
 
