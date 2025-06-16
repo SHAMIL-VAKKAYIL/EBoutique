@@ -2,10 +2,10 @@ import Product from "../models/ProductSchema.js"
 import Order from '../models/OrderSchema.js'
 import customProd from '../models/CustomiseModel.js'
 
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 import Cart from "../models/CartSchema.js"
 
-dotenv.conifg()
+// dotenv.conifg()
 
 export const addProduct = async (req, res) => {
     const productData = req.body
