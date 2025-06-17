@@ -26,6 +26,8 @@ services:
       - "80:80"
     depends_on:
       - backend
+    command: serve -s dist -l 0.0.0.0:80
+
 
 volumes:
   mongodb_data:
