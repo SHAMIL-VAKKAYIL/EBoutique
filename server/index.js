@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://216.10.242.120:5173',
+    origin: ['http://www.cloudnextgenpro.co.in', 'http://cloudnextgenpro.co.in'],
     credentials: true
 }))
 
@@ -25,7 +25,7 @@ app.use('/vendor', vendorRouter)
 app.use('/product', productRouter)
 
 
-app.listen(5000,'0.0.0.0', () => {
+app.listen(5000, '0.0.0.0', () => {
     console.log('Server is running on port 3000');
     DbConnect
 });
