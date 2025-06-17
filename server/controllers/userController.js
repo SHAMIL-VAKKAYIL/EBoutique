@@ -28,6 +28,8 @@ export const userSignup = async (req, res) => {
 
 export const userSignin = async (req, res) => {
     const { email, password } = req.body
+    console.log(email,password);
+    
     try {
         const user = await User.findOne({ email: email })
         if (!user) {
@@ -40,8 +42,9 @@ export const userSignin = async (req, res) => {
             if (!isPasswordCorrect) {
                 return res.status(400).json('invalid credentials')
             }
-
             else {
+                console.log(user);
+                
                 userToken(user._id, res)
                 res.status(200).json({
                     id: user._id,
