@@ -10,7 +10,7 @@ export const userProtectRoute = async (req, res, next) => {
             return res.status(401).json({ msg: "No token, authorization denied" })
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const decoded = jwt.verify(token, "dgnvjdkfhg")
 
         if (!decoded) {
             return res.status(401).json({ msg: "Token verification failed" })
@@ -37,7 +37,7 @@ export const adminProtectRoute = async (req, res, next) => {
             return res.status(401).json({ msg: "No token, authorization denied" })
         }
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const decoded = jwt.verify(token, 'dgnvjdkfhg')
 
         if (!decoded) {
             return res.status(401).json({ msg: "Token verification failed" })
@@ -63,7 +63,7 @@ export const vendorProtectRoute = async (req, res, next) => {
         if (!token) {
             return res.status(401).json({ msg: "No token, authorization denied" })
         }
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const decoded = jwt.verify(token, 'dgnvjdkfhg')
 
         if (!decoded) {
             return res.status(401).json({ msg: "Token verification failed" })
@@ -89,7 +89,7 @@ export const combineProtectRoute = async (req, res, next) => {
       const vendorToken = req.cookies.BoutiVendor;
       if (vendorToken) {
         try {
-          const decoded = jwt.verify(vendorToken, process.env.JWT_SECRET);
+          const decoded = jwt.verify(vendorToken, 'dgnvjdkfhg');
           const vendor = await Vendor.findById(decoded.vendorId).select("-password");
           if (vendor) {
             req.vendor = vendorToken;
@@ -105,7 +105,7 @@ export const combineProtectRoute = async (req, res, next) => {
       const adminToken = req.cookies.BoutiAdmin;
       if (adminToken) {
         try {
-          const decoded = jwt.verify(adminToken, process.env.JWT_SECRET);
+          const decoded = jwt.verify(adminToken, 'dgnvjdkfhg');
           const admin = await Admin.findById(decoded.adminId).select("-password");
           if (admin) {
             req.admin = admin;

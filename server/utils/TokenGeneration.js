@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 export const userToken = (userId, res) => {
-    const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId }, 'dgnvjdkfhg', {
         expiresIn: '7d'
     })
     res.cookie('BoutiUser', token, {
@@ -12,7 +12,7 @@ export const userToken = (userId, res) => {
 }
 
 export const adminToken = (adminId, res) => {
-    const token = jwt.sign({ adminId }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ adminId }, 'dgnvjdkfhg', {
         expiresIn: '7d'
     })
     res.cookie('BoutiAdmin', token, {
@@ -24,7 +24,7 @@ export const adminToken = (adminId, res) => {
 }
 
 export const vendorToken = (vendorId, res) => {
-    const token = jwt.sign({ vendorId }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ vendorId }, "dgnvjdkfhg", {
         expiresIn: '7d'
     })
     res.cookie('BoutiVendor', token, {
