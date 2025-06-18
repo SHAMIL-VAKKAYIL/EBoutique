@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ['http://www.cloudnextgenpro.co.in', 'http://cloudnextgenpro.co.in'],
+    origin: ['http://www.cloudnextgenpro.co.in', 'http://cloudnextgenpro.co.in', 'http://216.10.242.120'],
     credentials: true
 }))
 
